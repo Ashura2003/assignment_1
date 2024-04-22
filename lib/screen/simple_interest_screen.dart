@@ -36,6 +36,7 @@ class _SimpleInterestScreenState extends State<SimpleInterestScreen> {
       body: Form(
         key: formKey,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextFormField(
               onChanged: (value) {

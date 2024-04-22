@@ -1,13 +1,13 @@
 class SwapNumberModel {
-  final int first;
-  final int second;
+  int first;
+  int second;
 
   SwapNumberModel({
     required this.first,
     required this.second,
   });
 
-  swapNumbers({required int first, required int second}) {
+  swapNumbers() {
     first = first + second;
     second = first - second;
     first = first - second;
