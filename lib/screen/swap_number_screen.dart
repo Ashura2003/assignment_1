@@ -10,7 +10,7 @@ class SwapNumberScreen extends StatefulWidget {
 class _SwapNumberScreenState extends State<SwapNumberScreen> {
   int first = 0;
   int second = 0;
-  String? result;
+  String result = '';
   Widget sizedbox = const SizedBox(
     height: 8,
   );
@@ -26,7 +26,9 @@ class _SwapNumberScreenState extends State<SwapNumberScreen> {
           TextField(
             keyboardType: TextInputType.number,
             onChanged: (value) {
-              first = int.parse(value);
+              setState(() {
+                first = int.parse(value);
+              });
             },
             decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -36,7 +38,9 @@ class _SwapNumberScreenState extends State<SwapNumberScreen> {
           TextField(
             keyboardType: TextInputType.number,
             onChanged: (value) {
-              second = int.parse(value);
+              setState(() {
+                second = int.parse(value);
+              });
             },
             decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -45,16 +49,17 @@ class _SwapNumberScreenState extends State<SwapNumberScreen> {
           sizedbox,
           ElevatedButton(
             onPressed: () {
-              setState(() {});
-              first = first + second;
-              second = first - second;
-              first = first - second;
+              setState(() {
+                //swapNumbers(first: first, second: second);
+              });
             },
             child: const Text('Swap'),
           ),
           sizedbox,
           Text(
-            style: const TextStyle(fontSize: 30),
+            style: const TextStyle(
+              fontSize: 30,
+            ),
             'The first number is $first and the second number is $second',
           )
         ],
@@ -62,7 +67,5 @@ class _SwapNumberScreenState extends State<SwapNumberScreen> {
     );
   }
 
-  swapNumbers({required int first, required int second}) {
-    return 'Now the fisrt number is $first and the second number is $second';
-  }
+ 
 }

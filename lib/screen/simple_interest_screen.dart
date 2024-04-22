@@ -1,3 +1,4 @@
+import 'package:assignment_1/model/simple_interest_model.dart';
 import 'package:flutter/material.dart';
 
 class SimpleInterestScreen extends StatefulWidget {
@@ -8,13 +9,20 @@ class SimpleInterestScreen extends StatefulWidget {
 }
 
 class _SimpleInterestScreenState extends State<SimpleInterestScreen> {
-  double? principle;
-  double? time;
-  double? rate;
+  double? principle = 0;
+  double? time = 0;
+  double? rate = 0;
   double result = 0;
+
+  // Importing Simple Interest Model
+  SimpleInterestModel? simpleInterestModel;
+
   Widget sizedbox = const SizedBox(
     height: 8,
   );
+
+  //Create global key for form
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,62 +33,83 @@ class _SimpleInterestScreenState extends State<SimpleInterestScreen> {
         ),
         backgroundColor: Colors.deepPurpleAccent,
       ),
-      body: Column(
-        children: [
-          TextField(
-            onChanged: (value) {
-              principle = double.parse(value);
-            },
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Enter Principle',
+      body: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            TextFormField(
+              onChanged: (value) {
+                principle = double.parse(value);
+              },
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter Principle',
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Please Enter Principle";
+                }
+                return null;
+              },
             ),
-          ),
-          sizedbox,
-          TextField(
-            onChanged: (value) {
-              time = double.parse(value);
-            },
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Enter Time',
+            sizedbox,
+            TextFormField(
+              onChanged: (value) {
+                time = double.parse(value);
+              },
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter Time',
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Please Enter Time";
+                }
+                return null;
+              },
             ),
-          ),
-          sizedbox,
-          TextField(
-            onChanged: (value) {
-              rate = double.parse(value);
-            },
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Enter Rate',
+            sizedbox,
+            TextFormField(
+              onChanged: (value) {
+                rate = double.parse(value);
+              },
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter Rate',
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Please Enter Rate";
+                }
+                return null;
+              },
             ),
-          ),
-          sizedbox,
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                result = simpleInterest(
-                    principle: principle, time: time, rate: rate);
-              });
-            },
-            child: const Text("Calculate"),
-          ),
-          Text(
-            style: const TextStyle(
-              fontSize: 25,
+            sizedbox,
+            ElevatedButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  setState(() {
+                    simpleInterestModel = SimpleInterestModel(
+                        principle: principle, time: time, rate: rate);
+                    result = simpleInterestModel!.calculateSimpleInterest();
+                  });
+                }
+                //Run the code only if the data is validated
+              },
+              child: const Text("Calculate"),
             ),
-            "The simple interest is : $result",
-          )
-        ],
+            Text(
+              style: const TextStyle(
+                fontSize: 25,
+              ),
+              "The simple interest is : $result",
+            )
+          ],
+        ),
       ),
     );
-  }
-
-  double simpleInterest({double? principle, double? time, double? rate}) {
-    return ((principle ?? 1) * (time ?? 1) * (rate ?? 1) / 100);
   }
 }
