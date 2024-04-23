@@ -12,7 +12,7 @@ class FlutterLayoutsScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Colors.amberAccent,
+        color: Colors.blueAccent[100],
         height: 50,
         child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
