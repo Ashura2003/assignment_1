@@ -1,5 +1,4 @@
-import 'package:assignment_1/screen/area_of_circle_screen.dart';
-import 'package:assignment_1/screen/flutter_layouts_screen.dart';
+import 'package:assignment_1/screen/star_space_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -8,7 +7,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: FlutterLayoutsScreen(),
+      home: StarSpaceScreen(),
     );
   }
 }
