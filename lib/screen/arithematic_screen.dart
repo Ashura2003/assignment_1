@@ -12,7 +12,7 @@ class _ArithematicScreenState extends State<ArithematicScreen> {
   @override
   int? first;
   int? second;
-  int? result;
+  int result =0;
 
   ArithematicModel? arithematicModel;
 
@@ -87,3 +87,5 @@ class _ArithematicScreenState extends State<ArithematicScreen> {
     );
   }
 }
+
+
