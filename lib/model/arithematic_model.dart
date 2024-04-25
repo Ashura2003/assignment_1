@@ -11,4 +11,16 @@ class ArithematicModel {
   int addition() {
     return first + second;
   }
+
+  int subtraction() {
+    return first - second;
+  }
+
+  int multiply() {
+    return first * second;
+  }
+
+  int divide() {
+    return first ~/ second;
+  }
 }

@@ -8,6 +8,7 @@ class StarSpaceScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Stars"),
+        backgroundColor: Colors.greenAccent[200],
       ),
       body: Container(
         color: Colors.blueAccent[100],
