@@ -19,8 +19,14 @@ class ListTileScreen extends StatelessWidget {
             for (int i = 1; i <= 50; i++) ...{
               if (i % 2 == 0) ...{
                 GetListTile(
+                  imageName: 'image2.jpg',
                   index: i,
                 ),
+              } else ...{
+                GetListTile(
+                  imageName: 'image1.jpg',
+                  index: i,
+                )
               }
             }
           ],
