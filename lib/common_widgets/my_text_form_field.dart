@@ -4,18 +4,18 @@ class MyTextFormField extends StatelessWidget {
   const MyTextFormField({
     required this.onChanged,
     required this.text,
-    required this.keyboardType,
+    this.keyboardType,
     super.key,
   });
 
   final ValueChanged<String> onChanged;
   final String text;
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      keyboardType: keyboardType,
+      keyboardType: keyboardType ?? TextInputType.name,
       decoration: InputDecoration(
         labelText: text,
         border: const OutlineInputBorder(),
