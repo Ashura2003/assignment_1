@@ -1,4 +1,4 @@
-import 'package:assignment_1/screen/stack_screen.dart';
+import 'package:assignment_1/screen/bottom_screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -7,7 +7,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: StackScreen(),
+      home: DashboardScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
