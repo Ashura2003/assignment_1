@@ -9,6 +9,10 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  Widget gap = const SizedBox(
+    width: 5,
+  );
+
   List<ItemModel> lstItems = [
     ItemModel(itemId: 1, itemName: 'Laptop', itemPrice: 120000),
     ItemModel(itemId: 2, itemName: 'Phone', itemPrice: 20000),
@@ -148,6 +152,7 @@ class _CartScreenState extends State<CartScreen> {
                           Icons.edit,
                         ),
                       ),
+                      gap,
                       ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
@@ -155,7 +160,47 @@ class _CartScreenState extends State<CartScreen> {
                           ),
                         ),
                         onPressed: () {
-                          
+                          showDialog(
+                            context: context,
+                            builder: (ctx) => AlertDialog(
+                              title: const Text("Are you sure?"),
+                              content: const Text(
+                                  "Are you sure you want to delete this item?"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(
+                                      () {
+                                        lstItems.removeAt(i);
+                                      },
+                                    );
+                                    Navigator.of(ctx).pop();
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                      Colors.green,
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    "Yes",
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(ctx).pop();
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                      Colors.red,
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    "No",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
                         },
                         child: const Icon(
                           Icons.delete,
