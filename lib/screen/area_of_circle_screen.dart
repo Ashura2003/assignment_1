@@ -94,23 +94,24 @@ class _AreaCircleScreenState extends State<AreaCircleScreen> {
               ),
               RichText(
                 text: TextSpan(
-                    text: "A",
-                    style: const TextStyle(
-                      backgroundColor: Colors.green,
-                      color: Colors.yellow,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: "rea of Circle is : $result",
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 30,
-                            fontWeight: FontWeight.normal),
-                      )
-                    ]),
-              )
+                  text: "A",
+                  style: const TextStyle(
+                    backgroundColor: Colors.green,
+                    color: Colors.yellow,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: "rea of Circle is : $result",
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 30,
+                          fontWeight: FontWeight.normal),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
